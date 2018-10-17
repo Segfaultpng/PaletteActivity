@@ -42,9 +42,44 @@ public class PaletteAdapter extends ArrayAdapter<String>{
         final View view = mInflater.inflate(resourceLayout, parent, false);
 
         TextView text = (TextView) view.findViewById(R.id.colortext);
-        text.setText(colorstrings[position]);
 
-        view.findViewById(R.id.colorbase).setBackgroundColor(Color.parseColor(colorstrings[position]));
+        String color = colorstrings[position];
+        switch(color)
+        {
+            case "claro":
+                color = "clear";
+                break;
+            case "GRIS":
+                color = "GRAY";
+                break;
+            case "azul":
+                color = "blue";
+                break;
+            case "amarillo":
+                color = "yellow";
+                break;
+            case "magenta":
+                color = "magenta";
+                break;
+            case "cian":
+                color = "cyan";
+                break;
+            case "rojo":
+                color = "red";
+                break;
+            default:
+                color = colorstrings[position];
+        }
+
+        if (!color.equals("clear")) {
+            text.setText(colorstrings[position]);
+
+
+
+            view.findViewById(R.id.colorbase).setBackgroundColor(Color.parseColor(color));
+        }else {
+            text.setText("Select");
+        }
 
 
         return view;

@@ -54,8 +54,12 @@ public class ColorAdapter extends BaseAdapter{
         TextView colorname = (TextView) v.findViewById(R.id.colortext);
         ConstraintLayout background = (ConstraintLayout) v.findViewById(R.id.colorbase);
 
-        colorname.setText(colors[position]);
-        background.setBackgroundColor(Color.parseColor(colors[position]));
+        if (!colors[position].equals("clear")){
+            colorname.setText(colors[position]);
+            background.setBackgroundColor(Color.parseColor(colors[position]));
+        }
+
+
 
 
         return v;
